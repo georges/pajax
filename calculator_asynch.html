@@ -1,0 +1,43 @@
+<html>
+<head>
+	<script type="text/javascript" src="pajax/pajax_library.js"></script>
+	<script type="text/javascript" src="pajax/pajax_import.php?Calculator"></script>
+	<title>PAJAX Calculator Asynchronous</title>
+</head>
+<body>
+	<h1>PAJAX Calculator Asynchronous</h1>
+
+	<script>
+		var calculatorListener = new CalculatorListener();
+		var calculator = new Calculator(calculatorListener);
+		
+		function updateCB(r){
+			document.getElementById('result').innerHTML=r;
+		}
+		calculatorListener.onAdd = updateCB;
+		calculatorListener.onSubstract= updateCB;
+		calculatorListener.onMultiply = updateCB;
+		calculatorListener.onDivide = updateCB;
+		
+		function add() {
+			calculator.add(document.getElementById('a').value, document.getElementById('b').value);
+		}
+		function substract() {
+			calculator.substract(document.getElementById('a').value, document.getElementById('b').value);	
+		}
+		function multiply() {
+			calculator.multiply(document.getElementById('a').value, document.getElementById('b').value);	
+		}
+		function divide() {
+			calculator.divide(document.getElementById('a').value, document.getElementById('b').value);	
+		}
+	</script>
+	<input type="text" id="a" />
+	<input type="text" id="b" />=
+	<div id="result"></div>
+	<button onClick="add();">+</button>
+	<button onClick="substract();">-</button>
+	<button onClick="multiply();">*</button>
+	<button onClick="divide();">/</button>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<html>
+<head>
+	<script type="text/javascript" src="pajax/pajax_library.js"></script>
+	<script type="text/javascript" src="pajax/pajax_import.php?RPNCalculator"></script>
+	<style>
+	.calculator {
+		width: 11.5em;
+		padding: 0.5em;
+		margin: 5em auto;
+		background-color: #895b2d;
+	}
+	.lcd {
+		border: 1px solid;
+		margin: 0 auto;
+		padding: 0.2em 0.2em 0 0.2em;
+		background-color: #e6eea3;
+	}
+	.keypad {
+		border: 2px solid;
+		margin: 0 auto;
+		padding: 0.5em;
+		background-color: #895b2d;
+	}
+	.stack {
+		text-align: right;
+		font-family: Monaco;
+		font-size: 0.8em;
+		margin: 0 auto;
+	}
+	.stack ul {
+		margin: 0;
+	}
+
+	.stack li {
+		 list-style-type: none;
+	}
+
+	.buttons {
+		text-align: center;
+		margin: 0.5em auto;
+	}
+	.error {
+		font-size: 0.8em;
+		color: #dd0000;
+	}
+	hr {
+		clear: both;
+		visibility: hidden;
+	}
+	</style>
+	<title>PAJAX RPN Calculator</title>
+</head>
+<body>
+	<h1>PAJAX RPN Calculator</h1>
+
+	<script>
+		var listener = new RPNCalculatorListener();
+		var calculator = new RPNCalculator(listener);
+		
+		var visibleStackDepth = 10;
+		
+		function drawStack(r) {	
+			var str ="";
+			var pos = 0;
+			for (var j = r.length-1; j >= 0 ; j--) {
+				document.getElementById('s'+pos).innerHTML = r[j];
+				pos++;
+			}
+			for (var i = pos; i < visibleStackDepth; i++) {
+				document.getElementById('s'+i).innerHTML = "&nbsp;";
+			}
+			document.getElementById('a').value = "";
+		}
+		listener.onGetStack = drawStack;
+
+		function refreshStack(str) {
+			document.getElementById('e').innerHTML = "&nbsp;";
+			if (str == null) {
+				calculator.getstack(visibleStackDepth);
+			} else {
+				document.getElementById('e').innerHTML = str;
+			}
+		}
+		
+		function doEnter(value) {
+			if (value != "") {
+				calculator.push(value);
+			} else {
+				calculator.dup();
+			}
+		}
+		
+		listener.onPush = refreshStack;
+		listener.onDrop = refreshStack;
+		listener.onDup = refreshStack;
+		listener.onSwap = refreshStack;
+
+		listener.onAdd = refreshStack;
+		listener.onSubstract = refreshStack;
+		listener.onMultiply = refreshStack;
+		listener.onDivide = refreshStack;
+
+		listener.onGetstack = drawStack;
+		
+		calculator.getStack(visibleStackDepth);
+		
+	</script>
+	<div class="calculator">
+		<div class="lcd">
+			<div class="error" id="e">&nbsp;</div>
+			<div class="stack">
+				<ul>
+				<li id="s9">&nbsp;</li>
+				<li id="s8">&nbsp;</li>
+				<li id="s7">&nbsp;</li>
+				<li id="s6">&nbsp;</li>
+				<li id="s5">&nbsp;</li>
+				<li id="s4">&nbsp;</li>
+				<li id="s3">&nbsp;</li>
+				<li id="s2">&nbsp;</li>
+				<li id="s1">&nbsp;</li>
+				<li id="s0">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<div class="keypad">
+		<div class="buttons">
+		<input type="text" id="a" size="10" />&nbsp;
+		<button onClick="doEnter(document.getElementById('a').value);">enter</button>
+		</div>
+		<div class="buttons">
+		<button onClick="calculator.drop();">drop</button>
+		<button onClick="calculator.dup();">dup</button>
+		<button onClick="calculator.swap();">swap</button>
+		</div>
+		<div class="buttons">
+		<button onClick="calculator.add();">+</button>
+		<button onClick="calculator.substract();">-</button>
+		<button onClick="calculator.multiply();">*</button>
+		<button onClick="calculator.divide();">/</button>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

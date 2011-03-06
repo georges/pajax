@@ -1,0 +1,7 @@
+Version 0.5.2
+- Fixed remote code injection vulnerability in pajax_call_dispatcher.php. 
+- Added path validation during dynamic loading of class file.
+
+Version 0.5.1
+- Converted php short tag notation to full notation. This was causing problem on some hosting server where shot tag notation is disabled.
+- Fixed bug with IE memory leak. The xmlhttp object is now reused on every call as opposed to being created every time.

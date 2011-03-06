@@ -1,0 +1,38 @@
+<html>
+<head>
+	<script type="text/javascript" src="pajax/pajax_library.js"></script>
+	<script type="text/javascript" src="pajax/pajax_import.php?Calculator"></script>
+	<title>PAJAX Calculator</title>
+</head>
+<body>
+	<h1>PAJAX Calculator</h1>
+
+	<script>
+		var calculator = new Calculator();
+
+		function add() {
+			document.getElementById('result').innerHTML=calculator.add(document.getElementById('a').value, 
+			document.getElementById('b').value);
+		}
+		function substract() {
+			document.getElementById('result').innerHTML=calculator.substract(document.getElementById('a').value, 
+			document.getElementById('b').value);	
+		}
+		function multiply() {
+			document.getElementById('result').innerHTML=calculator.multiply(document.getElementById('a').value, 
+			document.getElementById('b').value);	
+		}
+		function divide() {
+			document.getElementById('result').innerHTML=calculator.divide(document.getElementById('a').value, 
+			document.getElementById('b').value);	
+		}
+	</script>
+	<input type="text" id="a" />
+	<input type="text" id="b" />=
+	<div id="result"></div>
+	<button onClick="add();">+</button>
+	<button onClick="substract();">-</button>
+	<button onClick="multiply();">*</button>
+	<button onClick="divide();">/</button>
+</body>
+</html>
