@@ -233,8 +233,10 @@ PajaxConnection.prototype.sendSynch = function (request) {
 		}
 		xmlhttp.setRequestHeader('Content-Type','text/json');		
 		xmlhttp.send(request.toJSON());
-		
-		return xmlhttp.responseText.fromJSON();
+
+		result = xmlhttp.responseText.fromJSON();
+		console.log(result);
+		return result;
 	}
 	return null;
 }
@@ -258,6 +260,7 @@ PajaxConnection.prototype.sendAsynch = function (request, listener) {
 		xmlhttp.onreadystatechange = function() {  
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
 				var result = xmlhttp.responseText.fromJSON(); 
+				console.log(result);
 				if (request.method != null && request.method.length > 0) {
 					cbmethod = "on" + request.method.substring(0, 1).toUpperCase() + request.method.substring(1, request.method.length);
 				}

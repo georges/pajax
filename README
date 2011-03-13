@@ -1,3 +1,6 @@
+Version 0.6.0
+- Updated for PHP 5. Minimum version needed now is 5.2.0
+
 Version 0.5.2
 - Fixed remote code injection vulnerability in pajax_call_dispatcher.php. 
 - Added path validation during dynamic loading of class file.

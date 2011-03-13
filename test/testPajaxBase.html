@@ -1,0 +1,52 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <title>Library Test for Pajax</title>
+    <link rel="stylesheet" type="text/css" href="jsunit/css/jsUnitStyle.css">
+	<script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../pajax/pajax_library.js"></script>
+	<script language="JavaScript">
+
+		function testPajaxConnectionInvalidURL() {
+			con = new PajaxConnection();
+			try {
+				con.remoteCall();
+				fail("Expecting exception to be thrown");
+			}
+			catch (e) {
+				console.log(e);
+				assertTrue("Expecting an exception", e != null);
+			}
+
+			con = new PajaxConnection("http://localhost:1234/");
+			try {
+				con.remoteCall();
+				fail("Expecting exception to be thrown");
+			}
+			catch (e) {
+				console.log(e);
+				assertTrue("Expecting an exception", e != null);
+			}
+		}
+
+
+		function testPajaxConnectionInvalidResponse() {
+			con = new PajaxConnection("http://localhost/");
+			try {
+				con.remoteCall();
+				fail("Expecting exception to be thrown");
+			}
+			catch (e) {
+				console.log(e);
+				assertTrue("Expecting an exception", e != null);
+			}
+		}
+
+		
+	</script>
+</head>
+<body>
+    <h1>Test for Pajax library</h1>
+    <p>This page contains tests for testing Pajax library support.</p>
+</body>
+</html>

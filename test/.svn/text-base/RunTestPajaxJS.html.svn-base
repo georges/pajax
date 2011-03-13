@@ -1,0 +1,23 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <title>Test Suite for Pajax</title>
+    <link rel="stylesheet" type="text/css" href="jsunit/css/jsUnitStyle.css">
+	<script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+	<script language="JavaScript">
+		function suite() {
+			suite = new top.jsUnitTestSuite();
+			suite.addTestPage("../testPajaxTypes.html");
+			suite.addTestPage("../testPajaxSession.html");
+			suite.addTestPage("../testPajaxAsynch.html");
+
+			return suite;
+		}
+	</script>
+</head>
+<body>
+    <h1>Test Suite for Pajax</h1>
+    <p>This page contains a suite of tests for testing Pajax.</p>
+  </body>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <title>Types Test for Pajax</title>
+    <link rel="stylesheet" type="text/css" href="jsunit/css/jsUnitStyle.css">
+	<script language="JavaScript" type="text/javascript" src="jsunit/app/jsUnitCore.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../pajax/pajax_library.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../pajax/pajax_import.php?TestNotRemotable"></script>
+	<script language="JavaScript" type="text/javascript" src="../pajax/pajax_import.php?TestTypes"></script>
+	<script language="JavaScript">
+
+		function testNotRemotableStub() {
+			var obj;
+			try {
+				obj = new TestNotRemotable();
+				fail("Exception should throw when creating remotable stub: " + e);
+			} catch (e) {
+			}
+			assert("Remotable stub should be null", typeof(obj) == "undefined");
+		}
+
+		function testRemotableStub() {
+			var obj;
+			try {
+				obj = new TestTypes();
+			} catch (e) {
+				fail("Exception creating remotable stub: " + e);
+			}
+			assert("Remotable stub should be an object", typeof(obj) == "object");
+		}
+
+		function testGetInteger() {
+			obj = new TestTypes();
+			ret = obj.getInteger();
+			assert("Expecting type 'number' got '" + typeof(ret) + "'", typeof(ret) == "number" && isFinite(ret));			
+		}
+
+		function testSetInteger() {
+			obj = new TestTypes();
+			ret = obj.isInteger(1);
+			assert("Expecting valid integer", ret);			
+		}
+
+		function testGetString() {
+			obj = new TestTypes();
+			ret = obj.getString();
+			assert("Should return an string", typeof(ret) == "string");			
+		}
+
+		function testGetBadString() {
+			obj = new TestTypes();
+			ret = obj.getBadString();
+			assert("Should return an string", typeof(ret) == "string");			
+		}
+
+		function testSetString() {
+			obj = new TestTypes();
+			ret = obj.isString("Hello World");
+			assert("Should return an string", ret);			
+		}
+
+		function testGetNull() {
+			obj = new TestTypes();
+			ret = obj.getNull();
+			assertNull("Should return null", ret);			
+		}
+
+		function testSetNull() {
+			obj = new TestTypes();
+			ret = obj.isNull(null);
+			assert("Should return null", ret);			
+		}
+
+		function testGetArrayInteger() {
+			obj = new TestTypes();
+			ret = obj.getArrayInteger();
+			assert("Should return an array", (typeof(ret) == "object") && (ret instanceof Array));			
+		}
+
+		function testGetArrayString() {
+			obj = new TestTypes();
+			ret = obj.getArrayString();
+			assert("Should return an array", (typeof(ret) == "object") && (ret instanceof Array));			
+		}
+
+		function testSetArrayInteger() {
+			obj = new TestTypes();
+			var a = new Array(5);
+			for (i=0; i<5; i++) {
+				a[i] = i;
+			} 
+			ret = obj.isArray(a);
+			assert("Should return an array", ret);			
+		}
+
+		function testSetArrayString() {
+			obj = new TestTypes();
+			var a = new Array(5);
+			for (i=0; i<5; i++) {
+				a[i] = "Element " + i;
+			} 
+			ret = obj.isArray(a);
+			assert("Should return an array", ret);			
+		}
+
+		function testTypeFloat() {
+			obj = new TestTypes();
+			ret = obj.getFloat();
+			assert("Should return a float", typeof(ret) == "number");			
+		}
+
+		function testGetObject() {
+			obj = new TestTypes();
+			ret = obj.getObject();
+			assert("Should return an object", typeof(ret) == "object");			
+		}
+
+		function testSetObject() {
+			obj = new TestTypes();
+			ret = obj.isObject(new Object());
+			assertTrue("Should check as an object", ret);			
+		}
+
+		function testGetBooleanTrue() {
+			obj = new TestTypes();
+			ret = obj.getTrue();
+			assert("Should return a boolean", typeof(ret) == "boolean");			
+			assertTrue("Should return true", ret);			
+		}
+
+		function testGetBooleanFalse() {
+			obj = new TestTypes();
+			ret = obj.getFalse();
+			assert("Should return a boolean", typeof(ret) == "boolean");			
+			assertFalse("Should return false", ret);			
+		}
+		
+		function testSetBooleanTrue() {
+			obj = new TestTypes();
+			ret = obj.isBoolean(true);
+			assert("Should return a boolean", ret);			
+		}
+
+		function testSetBooleanFalse() {
+			obj = new TestTypes();
+			ret = obj.isBoolean(false);
+			assert("Should return a boolean", ret);			
+		}
+
+/*
+	Not sure how this ever worked?
+		function testGetDate() {
+			obj = new TestTypes();
+			d = new Date();
+			ret = obj.getParam(d);
+			assert("Expecting a date object, got '" +ret.getClassName()+"'", ret.getClassName() == d.getClassName());			
+			assert("Expecting matching time, '" + d.getTime() + "' == '" + ret.getTime() + "'", ret.getTime() == d.getTime());			
+		}
+*/
+		function testGetParams() {
+			var a = new Array();
+			a[0] = true;
+			a[1] = false;
+			a[2] = 1;
+			a[3] = 1.1;
+			a[4] = "Hello World";
+			a[5] = new Array(5);
+			a[6] = new Object();
+			
+			obj = new TestTypes();			
+			ret = obj.getParams(a[0], a[1], a[2], a[3], a[4], a[5], a[6]);
+			for (i=0; i<a.length; i++) {
+				assert("Returned parameter ("+ i +") value '" + ret[i] + "' does not match '" + a[i] + "'", ret[i].toString() == a[i].toString());	
+				assert("Returned parameter ("+ i +") type '" + typeof(ret[i]) + "' does not match '" + typeof(a[i]) + "'", typeof(ret[i]) == typeof(a[i]));	
+
+			}
+		}
+
+		function testComplexObject() {
+			o = new Object();
+			o.a = new Array();
+			o.a[0] = new Array(5);
+			o.a[1] = new Object();
+			o.b = "Hello World";
+			o.c = 1;
+			o.d = 1.1;
+			o.e = null;
+			
+			obj = new TestTypes();			
+			ret = obj.getParam(o);
+			for (param in o) {
+				if (o[param]) {
+					assert(o[param].getClassName() + " != " + ret[param].getClassName(), o[param].getClassName() == ret[param].getClassName());
+				}
+			}
+			
+		}
+		function My2CustomObject() {
+		}
+		
+		function MyCustomObject() {
+			this.a = new Array();
+			this.a[0] = new Array(5);
+			this.a[1] = new Object();
+			this.b = "Hello World";
+			this.c = 1;
+			this.d = 1.1;
+			this.e = null;
+			this.f = new Object();
+			this.g = new My2CustomObject();
+		}
+		
+		function testCustomObject() {
+			my = new MyCustomObject();
+			obj = new TestTypes();			
+			ret = obj.getParam(my);
+			assert("Expecting class '" + my.getClassName() + "' got '" + ret.getClassName() + "'", my.getClassName() == ret.getClassName());
+			for (param in my) {
+				if (my[param]) {
+					assert(my[param].getClassName() + " != " + ret[param].getClassName(), my[param].getClassName() == ret[param].getClassName());
+				}
+			}
+		}
+		
+	</script>
+</head>
+<body>
+    <h1>Test for Pajax types</h1>
+    <p>This page contains tests for testing Pajax types support.</p>
+</body>
+</html>

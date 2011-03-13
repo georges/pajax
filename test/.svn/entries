@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="14"
+   name=""
+   committed-date="2006-02-12T22:14:37.954675Z"
+   url="svn+ssh://montreux.intra.auberger.com/repos/pajax/trunk/test"
+   last-author="gauberger"
+   kind="dir"
+   uuid="7e265e12-a00c-0410-93ce-e30a90ce7060"
+   repos="svn+ssh://montreux.intra.auberger.com/repos"
+   revision="14"/>
+<entry
+   committed-rev="14"
+   name="testPajaxBase.html"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="64ec382e40ca11d327b30bb3ee88749e"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="TestNotRemotable.class.php"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="8a16c2440f3e668c74267043ac3e7fad"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="RunTestPajaxPHP.php"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="b8166f28dd190be81c5f63a20186d5cd"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   name="phpunit"
+   kind="dir"/>
+<entry
+   committed-rev="14"
+   name="RunTestPajaxJS.html"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="0a2931993b5b671e3437c8c1ae629745"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="testPajax.php"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="cf69a9f0c0430f6124e21f181f3e95ba"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="testPajaxSession.html"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="2a6af3a46976273d58757bdd8916aa45"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="testPajaxTypes.html"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="000cbd9518e4efb09302bf851478c55c"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   name="jsunit"
+   kind="dir"/>
+<entry
+   committed-rev="14"
+   name="testPajaxAsynch.html"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="04ebd709b1b426734c7bfebc191c0a37"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="TestSession.class.php"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="14f35b3f955e70781c85bcb9b71e98ec"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+<entry
+   committed-rev="14"
+   name="TestTypes.class.php"
+   text-time="2006-02-12T22:17:29.000000Z"
+   committed-date="2006-02-12T22:14:37.954675Z"
+   checksum="a60b547daa3aeed964a4fa25d6ee465b"
+   last-author="gauberger"
+   kind="file"
+   prop-time="2006-02-12T22:17:29.000000Z"/>
+</wc-entries>

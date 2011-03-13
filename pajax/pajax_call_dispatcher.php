@@ -35,13 +35,14 @@ require_once('JSON.class.php');
 require_once('Pajax.class.php');
 
 $pajax = new Pajax();
-$json = new JSON();
+//$json = new JSON();
 
 $input = $HTTP_RAW_POST_DATA;
 
 error_log("PAJAX: Input JSON: " . $input);
 
-$invoke = $json->decode($input);
+//$invoke = $json->decode($input);
+$invoke = json_decode($input);
 
 // Marshaled parameters
 $class = $invoke->className;
@@ -84,24 +85,14 @@ if ($pajax->loadClass($class)) {
 }		
 
 if (! is_null($obj) && is_object($obj)) {
-	$args="";
-	if ($invoke->params != null) {
-		for ($i=0; $i<count($invoke->params); $i++) {
-			if ($i > 0) {
-				$args = $args . ", ";
-			}
-			$args = $args . $invoke->params[$i];
-		}
+	if ($invoke->params == null) {
+		$invoke->params = array();
 	}
 	
-	error_log("PAJAX: Calling " . $class . "->" . $method . "(". $args . ")");
-
 	// Invoking the method with parameters
 	$ret = call_user_func_array(array(&$obj, $method), $invoke->params);
-	
-	error_log("PAJAX: Returned: " . $ret );
-	
-	$output = $json->encode($ret);
+		
+	$output = json_encode($ret);
 
 	error_log("PAJAX: Output JSON: " . $output );
 	
