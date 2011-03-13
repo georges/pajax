@@ -31,17 +31,14 @@
 	the result of the call. It takes care of marshaling parameters back and
 	forth.
 */
-require_once('JSON.class.php');
 require_once('Pajax.class.php');
 
 $pajax = new Pajax();
-//$json = new JSON();
 
 $input = $HTTP_RAW_POST_DATA;
 
 error_log("PAJAX: Input JSON: " . $input);
 
-//$invoke = $json->decode($input);
 $invoke = json_decode($input);
 
 // Marshaled parameters
