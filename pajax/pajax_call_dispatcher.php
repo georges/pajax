@@ -31,6 +31,11 @@
 	the result of the call. It takes care of marshaling parameters back and
 	forth.
 */
+
+if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+  function session_is_registered($x) {return isset($_SESSION[$x]);}
+}
+
 require_once('Pajax.class.php');
 
 $pajax = new Pajax();
